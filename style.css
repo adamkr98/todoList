@@ -24,14 +24,17 @@ body {
     align-items: center;
 }
 
-.input {
+.inputContainer {
     /* border: red solid 2px; */
-    width: 100%;
+    width: 80%;
+
+    margin-bottom: 2rem;
     display: flex;
+    align-items: flex-end;
 }
 
 input {
-    border: black solid 1px;
+    /* border: black solid 1px; */
     width: 80%;
     height: 2rem;
 
@@ -39,6 +42,11 @@ input {
     outline: none;
 
     margin-top: 2rem;
+}
+
+.add {
+    width: 20%;
+    height: 2rem;
 }
 
 .list {

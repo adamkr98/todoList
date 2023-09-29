@@ -47,7 +47,14 @@ let addNewItem = (removeBtn, renameBtn) => {
         doneBtn = document.createElement('i');
         doneBtn.classList.add('fa', 'fa-check', idNumber);
 
-        newItem.textContent = input.value;
+        if(input.value.length < 20 ) {
+            newItem.textContent = input.value;
+        } else {
+            alert('too long')
+            input.value = "";
+            return
+        }
+
         input.value = "";
         list.appendChild(itemContainer);
 
@@ -71,15 +78,23 @@ let addNewItem = (removeBtn, renameBtn) => {
             }
         });
 
+        let isDone = false;
         doneBtn.addEventListener('click', (event) => {
             const doneParag = event.target.closest('.item-container').querySelector('.newItemText');
             const itemContainer = event.target.closest('.item-container');
-
-            if (doneParag && itemContainer) {
-              doneParag.style.textDecoration = "line-through";
-              itemContainer.style.backgroundColor = "#20FC8F";
+            
+        
+            if (isDone === false) {
+                doneParag.style.textDecoration = "line-through";
+                itemContainer.style.backgroundColor = "#20FC8F";
+                isDone = true;
+            } else if (isDone === true) {
+                doneParag.style.textDecoration = "none";
+                itemContainer.style.backgroundColor = "#989C94";
+                isDone = false;
             }
         });
+        
         
 
     }
@@ -94,7 +109,7 @@ let addNewItem = (removeBtn, renameBtn) => {
     `;
 
     newItem.style.cssText = `
-        width: 60%;
+        width: 50%;
         heigth: 2rem;
         color: white;
         margin-left: 2rem;
