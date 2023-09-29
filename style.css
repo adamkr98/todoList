@@ -17,7 +17,6 @@ body {
     background-color: #373F47;
     width: 38%;
     height: 30rem;
-    overflow-y: scroll;
 
     display: flex;
     flex-direction: column;
@@ -54,6 +53,37 @@ input {
     width: 100%;
     height: fit-content;
     height: 25rem;
-    /* overflow-y: scroll; */
+    overflow-y: auto;
+    
 }
 
+@media screen and (min-width: 350px) and (max-width: 500px) {
+    
+    body {
+        width: 100%;
+        height: 100vh;
+    
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .container {
+        /* border: rgb(59, 59, 87) solid 2px; */
+        background-color: #373F47;
+        width: 100%;
+        height: 100vh;
+    
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .list {
+        /* border: red solid 2px; */
+        width: 100%;
+        height: 100vh;
+        overflow-y: auto;
+        
+    }
+}
