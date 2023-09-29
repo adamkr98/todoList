@@ -78,9 +78,11 @@ let addNewItem = (removeBtn, renameBtn) => {
 
         renameBtn.addEventListener('click', (event) => {
             const parag = event.target.closest('.item-container').querySelector('.newItemText');
-            if (parag) {
+            if ( parag ) {
                 let changedName = prompt('Change the name');
-                parag.textContent = changedName;
+                if( changedName != null ) {
+                    parag.textContent = changedName;
+                }
             }
         });
 
