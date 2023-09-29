@@ -110,7 +110,7 @@ let addNewItem = (removeBtn, renameBtn) => {
     itemContainer.style = `
         border-bottom: white solid 2px;
         background-color: #989C94;
-        height: 2rem;
+        height: 3rem;
         display: flex;
         justify-items: space-between;
         align-items: center;
