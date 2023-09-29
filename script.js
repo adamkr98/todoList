@@ -25,7 +25,8 @@ let btnContainer;
 let removeBtn;
 let renameBtn;
 
-let addNewItem = (removeBtn) => {
+
+let addNewItem = (removeBtn, renameBtn) => {
     let idNumber = generateID();
 
     if(input.value === "") {
@@ -34,6 +35,7 @@ let addNewItem = (removeBtn) => {
         itemContainer = document.createElement('div');
         itemContainer.classList.add('item-container', generateID());
         newItem = document.createElement('p');
+        newItem.classList.add('newItemText');
         btnContainer = document.createElement('div');
 
         removeBtn = document.createElement('i');
@@ -42,6 +44,9 @@ let addNewItem = (removeBtn) => {
         renameBtn = document.createElement('i');
         renameBtn.classList.add('fa', 'fa-pencil', idNumber);
 
+        doneBtn = document.createElement('i');
+        doneBtn.classList.add('fa', 'fa-check', idNumber);
+
         newItem.textContent = input.value;
         input.value = "";
         list.appendChild(itemContainer);
@@ -49,7 +54,33 @@ let addNewItem = (removeBtn) => {
         itemContainer.appendChild(newItem);
         itemContainer.appendChild(btnContainer);
 
-        btnContainer.append(removeBtn, renameBtn);
+        btnContainer.append( doneBtn, renameBtn, removeBtn );
+
+        removeBtn.addEventListener('click', (event) => {
+            const itemContainer = event.target.closest('.item-container');
+            if (itemContainer) {
+                itemContainer.remove();
+            }
+        });
+
+        renameBtn.addEventListener('click', (event) => {
+            const parag = event.target.closest('.item-container').querySelector('.newItemText');
+            if (parag) {
+                let changedName = prompt('Change the name');
+                parag.textContent = changedName;
+            }
+        });
+
+        doneBtn.addEventListener('click', (event) => {
+            const doneParag = event.target.closest('.item-container').querySelector('.newItemText');
+            const itemContainer = event.target.closest('.item-container');
+
+            if (doneParag && itemContainer) {
+              doneParag.style.textDecoration = "line-through";
+              itemContainer.style.backgroundColor = "#20FC8F";
+            }
+        });
+        
 
     }
 
@@ -70,8 +101,10 @@ let addNewItem = (removeBtn) => {
     `;
 
     btnContainer.style.cssText = `
-        width: 5rem;
+        // border: red solid 2px;
+        width: 9rem;
         height: fit-content;
+        margin-right: 1rem;
         display: flex;
         justify-content: space-between;
     `
@@ -96,6 +129,16 @@ let addNewItem = (removeBtn) => {
         align-items: center;
     `;
 
+    doneBtn.style.cssText = `
+        cursor: pointer;
+        width: 2rem;
+        height: 2rem;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    `
+
 }
 
 addBtn.addEventListener('click', () => {
@@ -108,4 +151,3 @@ document.addEventListener('keypress', (event) => {
     }
 });
 
-add
