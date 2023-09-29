@@ -64,9 +64,15 @@ let addNewItem = (removeBtn, renameBtn) => {
         btnContainer.append( doneBtn, renameBtn, removeBtn );
 
         removeBtn.addEventListener('click', (event) => {
-            const itemContainer = event.target.closest('.item-container');
-            if (itemContainer) {
-                itemContainer.remove();
+            const isSure = window.confirm('Do you really want to remove it?');
+
+            if( isSure === true ) {
+                const itemContainer = event.target.closest('.item-container');
+                    if (itemContainer) {
+                        itemContainer.remove();
+                    }
+            } else {
+                return;
             }
         });
 
